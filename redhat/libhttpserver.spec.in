@@ -37,7 +37,7 @@ This package contains development files and headers.
 mkdir build
 cd build
 ../configure --prefix=/usr
-make
+make -j
 
 %install
 cd build
