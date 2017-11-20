@@ -26,10 +26,10 @@ ACLOCAL_AMFLAGS = -I m4
 
 SUBDIRS = src test examples
 DIST_SUBDIRS = src test examples
-EXTRA_DIST = libhttpserver.pc.in $(DX_CONFIG)
+EXTRA_DIST = libhttpserver.pc.in redhat/libhttpserver.spec.in doc/Makefile.in cmakemodule/FindLibHttpServer.cmake $(DX_CONFIG)
 
-MOSTLYCLEANFILES = $(DX_CLEANFILES) *.gcda *.gcno *.gcov
-DISTCLEANFILES = DIST_REVISION
+MOSTLYCLEANFILES = $(DX_CLEANFILES) redhat/SOURCES/* *.gcda *.gcno *.gcov
+DISTCLEANFILES = redhat/SOURCES/* redhat/SPEC/* redhat/RPMS/* redhat/SRPMS/* redhat/* DIST_REVISION
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = libhttpserver.pc
@@ -47,3 +47,13 @@ dist-hook:
 	date >DIST_REVISION
 	git branch -vv >>DIST_REVISION
 	cp DIST_REVISION $(distdir)/
+
+rpm: dist
+	mkdir -p redhat/SOURCES
+	mkdir -p redhat/BUILD
+	mkdir -p redhat/RPMS
+	mkdir -p redhat/SRPMS
+	cp libhttpserver-@VERSION@.tar.gz redhat/SOURCES
+	rpmbuild -v -bb redhat/libhttpserver.spec
+	rpmbuild -v -ba redhat/libhttpserver.spec
+

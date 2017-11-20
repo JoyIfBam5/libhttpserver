@@ -226,6 +226,7 @@ AC_OUTPUT(
       src/Makefile
       test/Makefile
       examples/Makefile
+      redhat/libhttpserver.spec
 )
 
 AC_MSG_NOTICE([Configuration Summary:  
