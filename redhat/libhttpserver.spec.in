@@ -36,22 +36,22 @@ This package contains development files and headers.
 %build
 mkdir build
 cd build
-../configure --prefix=/usr
-make -j
+../configure --prefix=/usr --libdir=%{_libdir}
+%make_build
 
 %install
 cd build
 make DESTDIR=$RPM_BUILD_ROOT install 
-rm $RPM_BUILD_ROOT/usr/lib/libhttpserver.la
+rm $RPM_BUILD_ROOT%{_libdir}/libhttpserver.la
 
 %files
 %defattr(-,root,root)
-/usr/lib/*.so.*
+%{_libdir}/*.so.*
 /usr/share/cmake/Modules/*.cmake
 
 %files devel
 %defattr(-,root,root)
-/usr/include
-/usr/lib/*.a
-/usr/lib/*.so
-/usr/lib/pkgconfig
+%{_includedir}
+%{_libdir}/*.a
+%{_libdir}/*.so
+%{_libdir}/pkgconfig
