@@ -12,6 +12,7 @@
 *.lo
 *.la
 .idea
+*.*.user
 libhttpserver.iml
 build/*
 aclocal.m4
