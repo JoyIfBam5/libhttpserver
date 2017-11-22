@@ -496,7 +496,7 @@ size_t load_file (const char* filename, char** content)
         *content = (char*) malloc((size+1) * sizeof(char));
         fp.seekg(0, ios::beg);
         fp.read(*content, size);
-        content[size] = '\0';
+        (*content)[size] = '\0';
         fp.close();
         return size;
     }
