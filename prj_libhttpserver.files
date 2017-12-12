@@ -1,7 +1,11 @@
+Makefile.am
+config.h.in
+configure.ac
 examples/benchmark.cpp
 examples/comet.cpp
 examples/hello_world.cpp
 examples/service.cpp
+redhat/libhttpserver.spec.in
 src/details/comet_manager.cpp
 src/details/http_endpoint.cpp
 src/gettext.h
