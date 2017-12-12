@@ -102,6 +102,11 @@ class webserver
         **/
         bool is_running();
         /**
+         * Method used to get listening port.
+         * @return port number where this webserver is listening.
+        **/
+        uint16_t get_server_port();
+        /**
          * Method used to register a resource with the webserver.
          * @param resource The url pointing to the resource. This url could be also parametrized in the form /path/to/url/{par1}/and/{par2}
          *                 or a regular expression.
@@ -174,7 +179,7 @@ class webserver
         webserver& operator=(const webserver& other);
 
     private:
-        const uint16_t port;
+        uint16_t port;
         http::http_utils::start_method_T start_method;
         const int max_threads;
         const int max_connections;

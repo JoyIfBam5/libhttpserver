@@ -384,6 +384,13 @@ bool webserver::start(bool blocking)
             this->port << endl;
         throw ::httpserver::webserver_exception();
     }
+
+    if(0 == this->port)
+    {
+        const union MHD_DaemonInfo* info =
+                MHD_get_daemon_info(daemon, MHD_DAEMON_INFO_BIND_PORT);
+        this->port = (NULL != info)? info->port : 0;
+    }
     details::daemon_item* di = new details::daemon_item(this, daemon);
     daemons.push_back(di);
 
@@ -405,6 +412,11 @@ bool webserver::start(bool blocking)
 bool webserver::is_running()
 {
     return this->running;
+}
+
+uint16_t webserver::get_server_port()
+{
+    return this->port;
 }
 
 bool webserver::stop()
