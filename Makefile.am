@@ -54,6 +54,5 @@ rpm: dist
 	mkdir -p redhat/RPMS
 	mkdir -p redhat/SRPMS
 	cp libhttpserver-@VERSION@.tar.gz redhat/SOURCES
-	rpmbuild -v -bb redhat/libhttpserver.spec
 	rpmbuild -v -ba redhat/libhttpserver.spec
 

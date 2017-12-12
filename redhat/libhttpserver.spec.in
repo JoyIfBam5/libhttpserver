@@ -4,7 +4,7 @@
 %define buildroot %{_topdir}/%{name}-%{version}-root
 
 Name: %{name}  
-Release: 2%{?dist}
+Release: @BUILD_NUMBER@%{?dist}
 Version: %{version}
 Summary: library embedding RESTful HTTP server functionality
 Group: Development/Libraries

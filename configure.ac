@@ -31,6 +31,9 @@ AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CANONICAL_HOST
 
+AC_SUBST(BUILD_NUMBER,${BUILD_NUMBER:-1})
+AC_DEFINE_UNQUOTED(BUILD_NUMBER,"${BUILD_NUMBER:-1}",[The build number])
+
 OLD_CXXFLAGS=$CXXFLAGS
 LT_INIT
 AC_PROG_CC
@@ -237,4 +240,5 @@ AC_MSG_NOTICE([Configuration Summary:
   TLS Enabled     :  ${have_gnutls}
   TCP_FASTOPEN    :  ${is_fastopen_supported}
   Static          :  ${static}
+  Version         :  libhttpserver_PKG_VERSION-${BUILD_NUMBER}
 ])
