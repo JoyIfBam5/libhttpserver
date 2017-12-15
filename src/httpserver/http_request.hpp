@@ -415,7 +415,7 @@ class http_request
         std::string version;
         std::string requestor;
 
-        short requestor_port;
+        unsigned short requestor_port;
         struct MHD_Connection* underlying_connection;
 
         void set_underlying_connection(struct MHD_Connection* conn)
